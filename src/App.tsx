@@ -6,9 +6,11 @@ import { ChakraProvider } from "@chakra-ui/react";
 function App(): JSX.Element {
   return (
     <>
-      <Header />
-      <UserInput />
-      <SavedPastes />
+      <ChakraProvider>
+        <Header />
+        <UserInput />
+        <SavedPastes />
+      </ChakraProvider>
     </>
   );
 }
