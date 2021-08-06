@@ -43,6 +43,7 @@ export default function UserInput(): JSX.Element {
             size="xs"
             height={400}
             shadow="md"
+            resize="none"
           />
         </Stack>
         <Button
