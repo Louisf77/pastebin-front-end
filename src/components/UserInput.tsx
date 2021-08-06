@@ -3,10 +3,11 @@ import { useState } from "react";
 export default function UserInput(): JSX.Element {
   const [textBody, setTextBody] = useState("");
   const [title, setTitle] = useState("");
-
+  const apiBaseURL = process.env.REACT_APP_API_BASE
   const onSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:4000/pastes", {
+      const response = await fetch(apiBaseURL + "/pastes", {
+        // const response = await fetch("http://localhost:4000/pastes", {
         method: "POST",
         body: JSON.stringify({ textbody: textBody, title: title }),
         headers: { "Content-Type": "application/json" },

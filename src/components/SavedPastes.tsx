@@ -22,16 +22,15 @@ export default function SavedPastes(): JSX.Element {
     paste_id: 0,
     time: "",
   });
-  //   const [openPaste,setOpenPaste] = useState({
-  //       paste_title : "",
-  //       paste_text : "",
-  //       paste_id: 0,
-  //       time: ""
+  const apiBaseURL = process.env.REACT_APP_API_BASE
 
-  //   })
   async function getPastes() {
     try {
-      const response = await fetch("http://localhost:4000/pastes");
+        //console.log({apiBaseURL})
+        console.log(process.env)
+      const response = await fetch(apiBaseURL + "/pastes");
+     
+    //   const response = await fetch("http://localhost:4000/pastes");
       const body = await response.json();
       console.log(body);
       setStoredPastes(body.data.pastes);
