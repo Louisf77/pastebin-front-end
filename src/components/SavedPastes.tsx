@@ -9,8 +9,14 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Box,
+  List,
   Button,
+  ListItem,
+  VStack,
+  Box,
+  StackDivider,
+  Stack,
+  Heading,
 } from "@chakra-ui/react";
 
 export default function SavedPastes(): JSX.Element {
@@ -22,15 +28,11 @@ export default function SavedPastes(): JSX.Element {
     paste_id: 0,
     time: "",
   });
-  const apiBaseURL = process.env.REACT_APP_API_BASE
+  const apiBaseURL = process.env.REACT_APP_API_BASE;
 
   async function getPastes() {
     try {
-        //console.log({apiBaseURL})
-        console.log(process.env)
       const response = await fetch(apiBaseURL + "/pastes");
-     
-    //   const response = await fetch("http://localhost:4000/pastes");
       const body = await response.json();
       console.log(body);
       setStoredPastes(body.data.pastes);
@@ -45,29 +47,46 @@ export default function SavedPastes(): JSX.Element {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent background="gray.100">
           <ModalHeader>{openPaste.paste_title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>{openPaste.paste_text}</ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
-      <h2>Saved Pastes</h2>
-      {storedPastes.map((obj) => (
-        <Box
-          onClick={() => {
-            onOpen();
-            setOpenPaste(obj);
-          }}
-          key={obj.paste_id}
+      <Box align="center">
+        <Heading size="md" color="gray.400">
+          Saved Pastes
+        </Heading>
+        <Stack
+          marginTop={2}
+          spacing={2}
+          align="center"
+          overflowY="scroll"
+          height="74.5vh"
         >
-          {obj.paste_text}
-        </Box>
-      ))}
+          {storedPastes.map((obj) => (
+            <Box
+              isTruncated
+              p="15px"
+              shadow="md"
+              borderWidth="1px"
+              width={300}
+              fontSize="12px"
+              background="gray.100"
+              color="gray.400"
+              height="510px"
+              align="center"
+              onClick={() => {
+                onOpen();
+                setOpenPaste(obj);
+              }}
+              key={obj.paste_id}
+            >
+              {obj.paste_text}
+            </Box>
+          ))}
+        </Stack>
+      </Box>
     </>
   );
 }

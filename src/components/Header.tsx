@@ -1,3 +1,9 @@
+import { Heading } from "@chakra-ui/react";
+
 export default function Header(): JSX.Element {
-  return <h1>Pastebin</h1>;
+  return (
+    <Heading marginTop={8} marginLeft="11%" color="gray.400">
+      Pastebin
+    </Heading>
+  );
 }
