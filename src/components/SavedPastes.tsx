@@ -17,6 +17,7 @@ import {
   StackDivider,
   Stack,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 
 export default function SavedPastes(): JSX.Element {
@@ -53,7 +54,9 @@ export default function SavedPastes(): JSX.Element {
           <ModalBody>{openPaste.paste_text}</ModalBody>
         </ModalContent>
       </Modal>
-      <Box align="center">
+      <Box align="center"
+      
+      >
         <Heading size="md" color="gray.400">
           Saved Pastes
         </Heading>
@@ -62,7 +65,19 @@ export default function SavedPastes(): JSX.Element {
           spacing={2}
           align="center"
           overflowY="scroll"
-          height="74.5vh"
+          height={525}
+          sx={{
+            '&::-webkit-scrollbar': {
+              width: '12px',
+              borderRadius: '8px',
+              backgroundColor: `gray.100`,
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: `gray.400`,
+              borderRadius: "10px",
+              
+            },
+          }}
         >
           {storedPastes.map((obj) => (
             <Box
@@ -71,10 +86,10 @@ export default function SavedPastes(): JSX.Element {
               shadow="md"
               borderWidth="1px"
               width={300}
-              fontSize="12px"
+              fontSize="10px"
               background="gray.100"
               color="gray.400"
-              height="510px"
+              height="20px"
               align="center"
               onClick={() => {
                 onOpen();
@@ -82,7 +97,9 @@ export default function SavedPastes(): JSX.Element {
               }}
               key={obj.paste_id}
             >
-              {obj.paste_text}
+             <Text
+             
+             > {obj.paste_text}</Text>
             </Box>
           ))}
         </Stack>
