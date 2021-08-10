@@ -7,21 +7,24 @@ export default function SavedComments({
 }: CommentInputProps): JSX.Element {
   const [savedComments, setSavedComments] = useState<IComment[]>([]);
   const apiBaseURL = process.env.REACT_APP_API_BASE;
-
-  async function getComments() {
-    try {
-      const commentResponse = await fetch(
-        apiBaseURL + `/pastes/comments/${openPaste.paste_id}`
-      );
-      const commentBody = await commentResponse.json();
-      setSavedComments(commentBody.data.comments);
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
+    console.log("rendered component")
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    getComments();
-  }, []);
+    const getComments = async() => {
+        try {
+          const commentResponse = await fetch(
+            apiBaseURL + `/pastes/comments/${openPaste.paste_id}`
+          );
+          const commentBody = await commentResponse.json();
+          setSavedComments(commentBody.data.comments);
+          
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+      getComments()
+  }, [apiBaseURL,openPaste.paste_id])
 
   return (
     <Box>

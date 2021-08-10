@@ -27,18 +27,19 @@ export default function SavedPastes(): JSX.Element {
   });
   const apiBaseURL = process.env.REACT_APP_API_BASE;
 
-  async function getPastes() {
-    try {
-      const response = await fetch(apiBaseURL + "/pastes");
-      const body = await response.json();
-      setStoredPastes(body.data.pastes);
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
+  
   useEffect(() => {
+    async function getPastes() {
+      try {
+        const response = await fetch(apiBaseURL + "/pastes");
+        const body = await response.json();
+        setStoredPastes(body.data.pastes);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
     getPastes();
-  }, []);
+  }, [apiBaseURL]);
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
