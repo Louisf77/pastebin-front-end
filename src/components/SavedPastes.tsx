@@ -27,7 +27,6 @@ export default function SavedPastes(): JSX.Element {
   });
   const apiBaseURL = process.env.REACT_APP_API_BASE;
 
-  
   useEffect(() => {
     async function getPastes() {
       try {
