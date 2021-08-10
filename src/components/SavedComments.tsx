@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Divider, Heading, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { CommentInputProps, IComment } from "../utils/types";
 
@@ -25,18 +25,20 @@ export default function SavedComments({
 
   return (
     <Box>
-      <Heading
-        textAlign="center"
-        fontSize="25px"
-        margin="10px"
-        color="gray.400"
-      >
-        Saved Comments
-      </Heading>
+      {savedComments.length > 0 && (
+        <Heading
+          textAlign="center"
+          fontSize="25px"
+          margin="10px"
+          color="gray.400"
+        >
+          Saved Comments
+        </Heading>
+      )}
       <Stack
         marginTop={2}
         marginLeft="5px"
-        spacing={2}
+        spacing={3}
         overflowY="scroll"
         maxHeight={150}
         sx={{
@@ -52,8 +54,11 @@ export default function SavedComments({
         }}
       >
         {savedComments.map((obj) => (
-          <Box key={obj.comment_id}>
-            <Text>{obj.comment}</Text>
+          <Box key={obj.comment_id} height="25px" padding="5px">
+            <Text fontSize="15px" textAlign="left">
+              {obj.comment}
+            </Text>
+            <Divider />
           </Box>
         ))}
       </Stack>
