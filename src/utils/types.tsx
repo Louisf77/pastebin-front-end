@@ -6,10 +6,10 @@ export interface IPaste {
 }
 
 export interface CommentInputProps {
-  openPaste: IPaste
+  openPaste: IPaste;
 }
 
 export interface IComment {
   comment_id: number;
-  comment?:string
+  comment?: string;
 }

@@ -1,13 +1,7 @@
 import Header from "./components/Header";
 import SavedPastes from "./components/SavedPastes";
 import UserInput from "./components/UserInput";
-import {
-  extendTheme,
-  ChakraProvider,
-   Grid,
-  GridItem,
-} from "@chakra-ui/react";
-
+import { extendTheme, ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 
 const theme = extendTheme({
   fonts: {

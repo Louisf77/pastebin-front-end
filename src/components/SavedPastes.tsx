@@ -31,7 +31,7 @@ export default function SavedPastes(): JSX.Element {
     try {
       const response = await fetch(apiBaseURL + "/pastes");
       const body = await response.json();
-      
+
       setStoredPastes(body.data.pastes);
     } catch (err) {
       console.error(err.message);
@@ -48,12 +48,8 @@ export default function SavedPastes(): JSX.Element {
           <ModalHeader>{openPaste.paste_title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>{openPaste.paste_text}</ModalBody>
-          <CommentInput
-            openPaste={openPaste}
-          />
-          <SavedComments
-            openPaste={openPaste}
-          />
+          <CommentInput openPaste={openPaste} />
+          <SavedComments openPaste={openPaste} />
         </ModalContent>
       </Modal>
       <Box align="center">
