@@ -5,20 +5,16 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  List,
-  Button,
-  ListItem,
-  VStack,
   Box,
-  StackDivider,
   Stack,
   Heading,
   Text,
 } from "@chakra-ui/react";
+import CommentInput from "./CommentInput";
+import SavedComments from "./SavedComments";
 
 export default function SavedPastes(): JSX.Element {
   const [storedPastes, setStoredPastes] = useState<IPaste[]>([]);
@@ -35,7 +31,7 @@ export default function SavedPastes(): JSX.Element {
     try {
       const response = await fetch(apiBaseURL + "/pastes");
       const body = await response.json();
-      console.log(body);
+      
       setStoredPastes(body.data.pastes);
     } catch (err) {
       console.error(err.message);
@@ -52,11 +48,15 @@ export default function SavedPastes(): JSX.Element {
           <ModalHeader>{openPaste.paste_title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>{openPaste.paste_text}</ModalBody>
+          <CommentInput
+            openPaste={openPaste}
+          />
+          <SavedComments
+            openPaste={openPaste}
+          />
         </ModalContent>
       </Modal>
-      <Box align="center"
-      
-      >
+      <Box align="center">
         <Heading size="md" color="gray.400">
           Saved Pastes
         </Heading>
@@ -67,15 +67,14 @@ export default function SavedPastes(): JSX.Element {
           overflowY="scroll"
           height={525}
           sx={{
-            '&::-webkit-scrollbar': {
-              width: '12px',
-              borderRadius: '8px',
+            "&::-webkit-scrollbar": {
+              width: "12px",
+              borderRadius: "8px",
               backgroundColor: `gray.100`,
             },
-            '&::-webkit-scrollbar-thumb': {
+            "&::-webkit-scrollbar-thumb": {
               backgroundColor: `gray.400`,
               borderRadius: "10px",
-              
             },
           }}
         >
@@ -97,9 +96,7 @@ export default function SavedPastes(): JSX.Element {
               }}
               key={obj.paste_id}
             >
-             <Text
-             
-             > {obj.paste_text}</Text>
+              <Text> {obj.paste_text}</Text>
             </Box>
           ))}
         </Stack>
