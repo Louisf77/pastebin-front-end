@@ -1,4 +1,4 @@
-import { Box, Center, Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Divider, Heading, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { CommentInputProps, IComment } from "../utils/types";
 

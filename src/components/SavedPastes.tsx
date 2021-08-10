@@ -31,7 +31,6 @@ export default function SavedPastes(): JSX.Element {
     try {
       const response = await fetch(apiBaseURL + "/pastes");
       const body = await response.json();
-
       setStoredPastes(body.data.pastes);
     } catch (err) {
       console.error(err.message);
