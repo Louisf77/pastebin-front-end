@@ -3,4 +3,4 @@
   publish = "build"
 
 [context.production.environment]
-  REACT_APP_API_BASE ="http://louisf77-pastebin.herokuapp.com"
+  REACT_APP_API_BASE ="postgres://dgunzpjfwdgpfu:f7b381d9b7b2bda65a77323fd9e78b300b1b0d3c5fb9bfd51ae2112993466ea7@ec2-3-248-103-75.eu-west-1.compute.amazonaws.com:5432/d837hd6qgn1s1q"

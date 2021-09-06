@@ -9,7 +9,6 @@ export default function SavedComments({
   const apiBaseURL = process.env.REACT_APP_API_BASE;
   console.log("rendered component");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const getComments = async () => {
       try {
